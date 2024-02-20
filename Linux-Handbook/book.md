@@ -10,32 +10,55 @@ The contents of this book are carefully curated as I am only teaching the conten
 
 # Table of Contents
 
-- [What is Linux?](#what-is-linux)
-- [Why should you learn Linux?](#why-should-you-learn-linux)
-- [What is an open source operating system?](#what-is-an-open-source-operating-system)
-- [What is a Linux distribution?](#what-is-a-linux-distribution)
-- [How to install and access linux](#how-to-install-and-access-linux)
-  - [Install Linux as the primary OS](#install-linux-as-the-primary-os)
-  - [install linux on a windows machine](#install-linux-on-a-windows-machine)
-  - [Access Linux on a Windows machine](#access-linux-on-a-windows-machine)
-
 ## What is Linux?
 
 Linux is an open-source operating system that is based on the Unix operating system. It was created by Linus Torvalds in 1991.Open-source means that the source code of the operating system is available to the public. This allows anyone to modify and distribute the operating system.
 
 If you are curious, you can have a look at the source code of the Linux kernel at [GitHub](https://github.com/torvalds/linux)
 
-## Why should you learn Linux?
+## Why should you learn about Linux?
 
-## What is an open source operating system?
+In today's data center landscape, Linux and Microsoft Windows stand out as the primary contenders, with Linux having a major share. Here are several compelling reasons to learn Linux:
+
+- If you are accustomed to Windows environments, familiarity with Linux is essential for seamless interoperability.
+- Given the prevalence of Linux hosting, there is a high chance that your application would be hosted on Linux. Hence learning Linux as a developer becomes increasingly valuable.
+- With cloud computing becoming the norm, chances are high that your cloud instances will rely on Linux.
+- Linux serves as the foundation for many operating systems for Internet of Things (IoT) and mobile applications.
+- In IT, opportunities abound for those skilled in Linux, remains consistently high.
+
+Based on my personal experience in the corporate with Project managers and developers, I have noticed that people don't focus on learning such stuff. It is overwhelming and pushed to the side. So why don't you leearnit and become a unique asset?
+
+## What does it meant that Linux is an open source operating system?
+
+First, what is open-source? Open source software is the software whose source code is freely accessible, allowing anyone to utilize, modify, and distribute it.
+
+Whenever source code is created, it is automatically considered copyrighted, and its distribution, is governed by the copyright holder through software licenses.
+
+In contrast to open source, proprietary or closed-source software restricts access to its source code. Only the creators can view, modify, or distribute it.
+
+Linux is open source primarily and it means that its source code is freely available. Anyone can view, modify, and distribute it. Developers from anywhere in the world can contribute to its improvement. This lays the foundation of collaboration which is an important aspect of open source softwares. The collaboative approach has led to the widespread adoption of Linux across servers, desktops, embedded systems, and mobile devices.
+
+The most interesting aspect of Linux being open source is that anyone can tailor the operating system to their specific needs without being restricted by proprietary limitations. Who knows, maybe you are the next distro creator :wink:
+
+If you are curious how the Linux kernel looks like, [here](https://github.com/torvalds/linux) is the GitHub link!
 
 ## What is a Linux distribution?
+
+By this point you know that you can re-use the Linux kernel code, modify it and create a new kernel. You can further combine different utilities and software to create a completely new operating system. So,a Linux distribution is a version of the Linux operating system that includes the Linux kernel, system utilities, and other software. Being open-source, a Linux distribution is a collaborative effort involving multiple independent open-source development communities.
+
+Today there are [hundreds](https://upload.wikimedia.org/wikipedia/commons/1/1b/Linux_Distribution_Timeline.svg) of Linux distributions to choose from, offering differing goals and criteria for selecting and supporting the software provided by their distribution.
+
+- Distributions vary from one another, but they generally have a number of common characteristics:
+- A distribution consists of a Linux kernel.
+- It supports user space programs.
+- A distribution may be small and single-purpose or include thousands of open source programs.
+- Some means of installing and updating the distribution and its components should be provided.
 
 ## How to install and access linux
 
 The best way to learn is to apply the concepts as you go. In this section, we'll learn how to install Linux on your machine so you can follow along. We'll also learn how to access Linux on a Windows machine.
 
-### Install Linux as the primary OS
+#### Install Linux as the primary OS
 
 Installing Linux as the primary OS is the most efficient way to use Linux as you can use the full power of your machine.
 
@@ -78,6 +101,10 @@ for advanced installation, you can explore the following topics:
 
 - Disk partitioning.
 - Setting swap memory for enabling hibernation.
+
+Explore the terminal and folders.
+
+> 💡 The shortcut for opening the terminal is `ctrl+alt+t`
 
 ### install linux on a windows machine
 

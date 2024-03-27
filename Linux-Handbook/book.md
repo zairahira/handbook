@@ -1,3 +1,5 @@
+check verify commit
+
 Learning Linux is one of the most valuable skills in the IT industry. It can help you get things done faster and more efficiently. Many of the world's powerful servers and supercomputers run on Linux.
 
 I have been an active user of Linux for more than 8 years now. I have maintained critical Linux application and web servers in my role as a system administrator. I have also used Linux as my primary operating system for development and personal use.
@@ -12,17 +14,34 @@ In this book, you'll learn the basics of the Linux command line, and then more a
 
 # Table of Contents
 
-[Part 1: Introduction to Linux](#part-1-introduction-to-linux)
-
-- [1. Getting started with Linux](#1-getting-started-with-linux)
-  - [What is Linux?](#what-is-linux)
-  - [Why should you learn about Linux?](#why-should-you-learn-about-linux)
-  - [What does it mean that Linux is an open source operating system?](#what-does-it-meant-that-linux-is-an-open-source-operating-system)
-  - [What is a Linux distribution?](#what-is-a-linux-distribution)
-  - [How to install and access linux](#how-to-install-and-access-linux)
-    - [Install Linux as the primary OS](#install-linux-as-the-primary-os)
-    - [How to use Linux on a windows machine](#how-to-use-linux-on-a-windows-machine)
-
+- [Part 1: Introduction to Linux](#part-1-introduction-to-linux)
+   * [1. Getting started with Linux](#1-getting-started-with-linux)
+      + [What is Linux?](#what-is-linux)
+      + [Why should you learn about Linux?](#why-should-you-learn-about-linux)
+      + [What does it mean that Linux is an open-source operating system?](#what-does-it-mean-that-linux-is-an-open-source-operating-system)
+      + [What is a Linux distribution?](#what-is-a-linux-distribution)
+      + [How to install and access Linux?](#how-to-install-and-access-linux)
+            * [Install Linux as the primary OS](#install-linux-as-the-primary-os)
+         - [How to use Linux on a Windows machine?](#how-to-use-linux-on-a-windows-machine)
+- [**Part 2: Introduction to Bash shell and system commands**](#part-1-introduction-to-bash-shell-and-system-commands)
+   * [1. Getting started the Bash shell](#1-getting-started-the-bash-shell)
+      + [Introduction to bash shell](#introduction-to-bash-shell)
+      + [The prompt](#the-prompt)
+   * [2. Writing your first command- Identifying Yourself: The **`whoami`** Command](#2-writing-your-first-command-identifying-yourself-the-whoami-command)
+   * [3. Command structure](#3-command-structure)
+   * [4. Commands reference](#4-commands-reference)
+   * [5. Bash Commands and Keyboard Shortcuts](#5-bash-commands-and-keyboard-shortcuts)
+- [**Part 3: Understanding Your Linux System**](#part-3-understanding-your-linux-system)
+   * [1. Exploring Your Linux System](#1-exploring-your-linux-system)
+      + [Discovering Your OS and Specs:](#discovering-your-os-and-specs)
+         - [The **`uname`** Command- print system information](#the-uname-command-print-system-information)
+         - [The **`lscpu`** Command- get details of the CPU architecture ](#the-lscpu-command-get-details-of-the-cpu-architecture)
+- [**Part 4: Managing files from the command line**](#part-4-managing-files-from-the-command-line)
+   * [1. The Linux file system heirarchy](#1-the-linux-file-system-heirarchy)
+   * [2. Navigating the Linux file system](#2-navigating-the-linux-file-system)
+   * [3. Managing files and directories](#3-managing-files-and-directories)
+   * [4. Locating files and folders ](#4-locating-files-and-folders)
+  
 # Part 1: Introduction to Linux
 
 ## 1. Getting started with Linux
@@ -251,3 +270,516 @@ One such example is [JSLinux](https://jslinux.org/). The screenshot below shows 
 Instead of running Linux directly on your Windows machine, you can consider using cloud-based Linux environments or virtual private servers (VPS) to access and work with Linux remotely.
 
 Services like Amazon EC2, Microsoft Azure, or DigitalOcean provide Linux instances that you can connect to from your Windows computer. Note that some of these services offer free tiers, but they are not usually free in the long run.
+
+# Part 2: Introduction to Bash shell and system commands
+
+## 1. Getting started the Bash shell
+### Introduction to bash shell
+
+The Linux command line is provided by a program called the shell. Over the years, the shell program has evolved to cater to various options.
+
+Different users can be configured to use different shells. But, most users prefer to stick with the current default shell. The default shell for many Linux distros is the GNU Bourne-Again Shell (bash). Bash is succeeded by Bourne shell (`sh`).
+
+To find out your current shell, you can use the below command. 
+
+```bash
+echo $SHELL
+```
+Command breakdown:
+- The `echo` command is used to print on the terminal. 
+- The `$SHELL` is a special variable that holds the name of the current shell.
+
+
+In my setup, the output is `/bin/bash`. This means that I am using the bash shell.
+
+```bash
+# output
+echo $SHELL
+/bin/bash
+```
+Bash is very powerful as it can simplify certain operations that are hard to accomplish efficiently with a GUI. Remember that most servers do not have a GUI, and it is best to learn to use the powers of a command line interface (CLI).
+
+### The prompt
+
+When a shell is used interactively, it displays a  `$`  when it is waiting for a command from the user. This is called the shell prompt.
+
+`[username@host ~]$`
+
+If the shell is running as root(you'll learn more about the root user later on), the prompt is changed to  `#`. The superuser shell prompt looks like this:
+
+`[root@host ~]#`
+
+## 2. Writing your first command- Identifying Yourself: The **`whoami`** Command
+
+It's time to use the terminal.
+Excited? 😃
+
+You can get the username you are logged in with by using the `whoami` command. This command is useful when you are switching between different users and want to confirm the current user.
+
+Just after the `$` sign, type `whoami` and press enter.
+
+```bash
+whoami
+```
+
+my out/in
+
+```bash
+zaira@zaira-ThinkPad:~$ whoami
+zaira
+
+```
+
+## 3. Command structure
+
+A command is a program that performs a specific operation. Once you have access to the shell, you can
+enter any command after the `$` sign and see the output on the terminal.
+
+Generally, Linux commands follow this syntax:
+
+```bash
+command [options] [arguments]
+```
+
+Here is the breakdown of the above syntax:
+
+- `command`: This is the name of the command you want to execute. `ls` (list), `cp` (copy), and `rm` (remove) are common Linux commands.
+
+- [options]: Options, or flags, often preceded by a hyphen (-) or double hyphen (--), modify the behavior of the command. They can change how the command operates. For example, `ls -a` uses the `-a` option to display hidden files in the current directory. 
+
+- [arguments]: Arguments are the inputs for the commands that require one. These could be filenames, user names, or other data that the command will act upon. For example, in the command `cat access.log`, `cat` is the command and `access.log` is the input. As a result, the `cat` command displays the contents of the `access.log` file. 
+
+Options and arguments are not required for all commands. Some commands can be run without any options or arguments, while others might require one or both to function correctly. You can always refer to the command's manual to check the options and arguments it supports.
+
+> tip: You can view a command's manual using the `man` command.
+
+![Alt text](ls-man.png)
+You can see options for a command in detail using `man ls`
+
+## 4. Commands reference
+
+some commonly used commands
+go to this section
+
+use man
+
+## 5. Bash Commands and Keyboard Shortcuts
+
+| Operation | Shortcut  |
+|--|--|
+| Look for previous command| Up Arrow |
+| Jump to the beginning of the previous word| Ctrl+LeftArrow |
+| Clear characters from the cursor to the end of the command line? |  Ctrl+K |
+| Complete commands, file names, and options? | Pressing Tab |
+| Jumps to the beginning of the command line? | Ctrl+A |
+| Displays the list of previous commands     | history |
+
+
+
+# **Part 3: Understanding Your Linux System**
+
+## **1. Exploring Your Linux System**
+
+### Discovering Your OS and Specs:
+#### The **`uname`** Command- print system information
+You can get detailed system information from the `uname` command. 
+
+When you provide the `-a` option, it prints all the system information.
+
+```bash
+zaira@zaira~$ uname -a
+# output
+Linux zaira-ThinkPad 6.5.0-21-generic #21~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Feb  9 13:32:52 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+```
+
+In the output, above,
+- `Linux`: Indicates the operating system.
+- `zaira`: Represents the hostname of the machine.
+- `6.5.0-21-generic #21~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Feb  9 13:32:52 UTC 2`: Provides information about the kernel version, build date, and some additional details.
+- `x86_64 x86_64 x86_64`: Indicates the architecture of the system.
+- `GNU/Linux`: Represents the operating system type.
+
+
+#### The **`lscpu`** Command- get details of the CPU architecture 
+
+The `lscpu` command in Linux is used to display information about the CPU architecture. When you run `lscpu` in the terminal, it provides details such as:
+
+- Architecture of the CPU (e.g., x86_64)
+- CPU op-mode(s) (e.g., 32-bit, 64-bit)
+- Byte Order (e.g., Little Endian)
+- CPU(s) (number of CPUs), etc
+Let's try it out.
+
+```bash
+zaira@zaira~$ lscpu
+# output
+Architecture:            x86_64
+  CPU op-mode(s):        32-bit, 64-bit
+  Address sizes:         48 bits physical, 48 bits virtual
+  Byte Order:            Little Endian
+CPU(s):                  12
+  On-line CPU(s) list:   0-11
+Vendor ID:               AuthenticAMD
+  Model name:            AMD Ryzen 5 5500U with Radeon Graphics
+    CPU family:          23
+    Model:               104
+    Thread(s) per core:  2
+    Core(s) per socket:  6
+    Socket(s):           1
+    Stepping:            1
+    CPU max MHz:         4056.0000
+    CPU min MHz:         400.0000
+```
+
+That was a whole lot of information! Remeber you can always skim the relevant information using specific flags.
+
+
+
+# **Part 4: Managing files from the command line**
+
+## **1. The Linux file-system heirarchy**
+
+All files in Linux are stored in a file-system. It follows an inverted-tree like structure because the root is at the top most. 
+
+The `/` is the root directory and the starting point of the file system. The root directory contains all other directories and files on the system. The `/` character aslo serves as a directory separator between path names. For example, `/home/alice` forms a complete path.
+
+The image below shows the complete file system hierarchy. Each directory servers a specific purpose.
+
+Note that, this is not an exhaustive list and different distributions may have different configurations.
+
+![Alt text](image-12.png)
+
+Here is a table that shows the purpose of each directory:
+
+|Location|Purpose|
+|--|--|
+|/bin| Essential command binaries|
+|/boot| Static files of the boot loader, needed in order to start the boot process.|
+|/etc| Host-specific system configuration|
+|/home| User home directories|
+|/root| Home directory for the administrative root user|
+|/lib | Essential shared libraries and kernel modules|
+|/mnt | Mount point for mounting a filesystem temporarily|
+|/opt | Add-on application software packages|
+|/usr| Installed software and shared libraries|
+|/var| Variable data that is also persistent between boots|
+|/tmp| Temporary files that are accessible to all users|
+
+💡 Learn more about the file-sytem using the `man hier` command.
+
+You can check your file-system using the `tree -d -L 1` command. You can modify the `-L` flag to change the depth of the tree.
+
+```bash
+zaira@zaira-ThinkPad:/$ tree -d -L 1
+.
+├── bin -> usr/bin
+├── boot
+├── cdrom
+├── data
+├── dev
+├── etc
+├── home
+├── lib -> usr/lib
+├── lib32 -> usr/lib32
+├── lib64 -> usr/lib64
+├── libx32 -> usr/libx32
+├── lost+found
+├── media
+├── mnt
+├── opt
+├── proc
+├── root
+├── run
+├── sbin -> usr/sbin
+├── snap
+├── srv
+├── sys
+├── tmp
+├── usr
+└── var
+
+25 directories
+```     
+
+### absolute path vs relative path
+
+ 
+This  list  is  not  exhaustive; different distributions and
+       systems may be configured differently.
+
+
+## **2. Navigating the Linux file system**
+
+### Locating your current directory using the `pwd` command
+
+It is easy to get lost in the Linux file system, especially if you are new to the command line. You can locate your current directory using the `pwd` command. 
+
+Here is an example:
+
+```bash
+zaira@zaira:~$ pwd
+# output
+/home/zaira
+```
+
+### Changing directories using the `cd` command
+
+The command to change directories is `cd` and it stands for "change directory". You can use the `cd` command to navigate to a different directory.
+
+You can use a relative path or an absolute path.
+
+home>bob>documents>work>project
+
+
+For example, if you want to navigate the above file strcture from start to end, the command would be like this:
+
+```bash
+zaira@zaira:~$ cd home/bob/documents/work/project
+
+```
+
+✏️ Notes
+
+Some other commonly used `cd` shortcuts are:
+
+
+| Command | Description |
+|--|--|
+| `cd ..` | Go back one directory |
+| `cd ../..` | Go back two directories |
+| `cd` or `cd ~` | Go to the home directory |
+| `cd -` | Go to the previous directory |
+
+
+## 3. Managing files and directories
+cp mv rm mkdir rmdir
+
+When working with files and directories you might want to copy, move, remove and create new files and directories. Here are some commands that can help you with that.
+
+### Creating new directories using the `mkdir` command
+
+You can create an empty directory using the `mkdir` command.
+
+```bash
+# creates an empty directory named "foo" in the current folder
+
+zaira@zaira:~$ mkdir foo
+```
+
+You can also create directories recursively using the `-p` option.
+
+```bash
+zaira@zaira-ThinkPad:~/samples$ mkdir -p tools/index/helper-scripts
+
+zaira@zaira-ThinkPad:~/samples$ tree
+# output 
+.
+└── tools
+    └── index
+        └── helper-scripts
+
+3 directories, 0 files
+```
+
+### Creating new files using the `touch` command
+
+The `touch` command creates an empty file. You can use it like this:
+  
+  ```bash
+  # creates empty file "file.txt" in the current folder
+  zaira@zaira:~$ touch file.txt
+  ```
+If you want to create multiple files in a single command, the file names can be chained together.
+
+```bash
+# creates empty files "file1.txt", "file2.txt", and "file3.txt" in the current folder
+
+zaira@zaira:~$ touch file1.txt file2.txt file3.txt
+```
+
+
+### Removing files and directories using the `rm` and `rmdir` command
+
+The `rm` command is used to remove both files and non-empty directories. 
+
+| Command | Description |
+|--|--|
+| `rm file.txt` | Removes the file `file.txt` |
+| `rm -r directory` | Removes the directory `directory` and its contents |
+| `rm -f file.txt` | Removes the file `file.txt` without prompting for confirmation |
+|`rmdir` directory| Removes an empty directory|
+
+## 4. Locating files and folders using the `find` command
+
+The  `find`  command lets you efficiently search for files, folders, and character and block devices.
+
+Below is the basic syntax of the  `find`  command:
+
+```bash
+find /path/ -type f -name file-to-search
+
+```
+
+Where,
+
+-   `/path`  is the path where file is expected to be found. This is the starting point to search files. The path can also be`/`or  `.`  which represent root and current directory, respectively.
+-   `-type`  represents the file descriptors. They can be any of the below:
+
+`f`  –  **Regular file**  such as text files, images and hidden files.
+
+`d`  –  **Directory**. These are the folders under consideration.
+
+`l`  –  **Symbolic link**. Symbolic links point to files and are similar to shortcuts.
+
+`c`  –  **Character devices**. Files that are used to access character devices are called character device files. Drivers communicate with character devices by sending and receiving single characters (bytes, octets). Examples include keyboards, sound cards and mouse.
+
+`b`  –  **Block devices**. Files that are used to access block devices are called block device files. Drivers communicate with block devices by sending and receiving entire blocks of data. Examples include USB, CD-ROM
+
+-   `-name`  is the name of the file type that you want to search.
+
+### How to search files by name or extension
+
+Suppose we need to find files that contain "style" in their name. We'll use this command:
+
+```bash
+find . -type f -name "style*"
+```
+
+**Output**
+
+```bash
+#output
+zaira@zaira:~/samples$ find . -type f -name "style*"
+./style.css
+./styles.css
+```
+
+Now let's say we want to find files with a particular extension like  `.html`. We'll modify the command like this:
+
+```bash
+find . -type f -name "*.html"
+```
+
+**Output**
+
+```bash
+# output
+zaira@zaira-ThinkPad:~/samples$ find . -type f -name "*.html"
+./services.html
+./blob.html
+./index.html
+```
+
+### How to search hidden files
+
+Hidden files are represented by a dot in the beginning of the filename. They are normally hidden, but can be viewed with  `ls -a`  in the current directory.
+
+We can modify the  `find`  command as shown below to search for hidden files.
+
+```bash
+find . -type f -name ".*"
+```
+
+**Output**
+
+```bash
+zaira@zaira:~/samples$ ls -la
+# folder contents
+total 5
+drwxrwxr-x  2 zaira zaira 4096 Mar 26 14:17 .
+drwxr-x--- 61 zaira zaira 4096 Mar 26 14:12 ..
+-rw-rw-r--  1 zaira zaira    0 Mar 26 14:17 .bash_history
+-rw-rw-r--  1 zaira zaira    0 Mar 26 14:17 .bash_logout
+-rw-rw-r--  1 zaira zaira    0 Mar 26 14:17 .bashrc
+
+zaira@zaira:~/samples$ find . -type f -name ".*"
+# find output
+./.bash_logout
+./.bashrc
+./.bash_history
+```
+
+List of hidden files in my home directory
+
+### How to search log files and configuration files
+
+Log files usually have the extension  `.log`, and we can find them like this:
+
+```bash
+ find . -type f -name "*.log"
+```
+
+Similarly, we can search for configuration files like this:
+
+```bash
+ find . -type f -name "*.conf"
+```
+### How to search other files by type
+
+We can search for character block files by providing  `c`  to  `-type`:
+
+```bash
+find / -type c
+```
+
+Similarly, device block files can be found by using  `b`:
+
+```bash
+find / -type b
+```
+
+### How to search directories
+
+In the example below, we are finding the folders using  `-type d` flag.
+
+```bash
+zaira@zaira:~/samples$ ls -l
+# folder contents
+drwxrwxr-x 2 zaira zaira 4096 Mar 26 14:22 hosts
+-rw-rw-r-- 1 zaira zaira    0 Mar 26 14:23 hosts.txt
+drwxrwxr-x 2 zaira zaira 4096 Mar 26 14:22 images
+drwxrwxr-x 2 zaira zaira 4096 Mar 26 14:23 style
+drwxrwxr-x 2 zaira zaira 4096 Mar 26 14:22 webp 
+zaira@zaira:~/samples$ 
+zaira@zaira:~/samples$ find . -type d 
+# find directory output
+.
+./webp
+./images
+./style
+./hosts
+```
+
+### How to search files by size
+
+An incredibly helpful use of the  `find`  command is to list files based on a particular size.
+
+```bash
+find / -size +250MB
+```
+
+Here, we are listing files whose size exceeds 250MB
+
+Other units include:
+
+-   `G`: GigaBytes.
+-   `M`: MegaBytes.
+-   `K`: KiloBytes
+-   `c`  : bytes.
+
+Just replace <Unit Type> with the relevant unit.
+
+```bash
+find <directory> -type f -size +N<Unit Type>
+
+```
+
+### How to search files by modification time
+
+```bash
+find /path -name "*.txt" -mtime -10 
+```
+
+-   **-mtime +10**  means you are looking for a file modified 10 days ago.
+-   **-mtime -10**  means less than 10 days.
+-   **-mtime 10** If you skip + or – it means exactly 10 days.
